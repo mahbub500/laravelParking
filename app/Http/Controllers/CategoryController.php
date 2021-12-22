@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class CategoryController extends Controller
@@ -15,7 +17,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category_all = DB::table('category')->get();
+
+        //    $id = Auth::user()->id;
+        // dump($id);
+        $category_all = DB::table('categories')->get();
         return view('category/index',compact('category_all'));
     }
 
@@ -47,13 +52,14 @@ class CategoryController extends Controller
         // $category->save();
         // return redirect()->back();
         // dd($request);
-        DB::table('category')->insert([
+        DB::table('categories')->insert([
             'category_name'=>$request->category_name,
             'category_active'=>$request->category_active,
             'created_at'=>now(),
             'updated_at'=>now(),
         ]);
-        return redirect()->back();
+        // return redirect()->back();
+        return redirect('/category');
 
     }
 
@@ -77,7 +83,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         // $category=DB::table('category')->where('id',$id)->get();
-        $category=DB::table('category')->find($id);
+        $category=DB::table('categories')->find($id);
         // dd($category);
         return view('category/edit',compact('category'));
 
@@ -93,7 +99,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         // dd($request);
-        DB::table('category')->where('id',$id)->update([
+        DB::table('categories')->where('id',$id)->update([
             'category_name'=>$request->category_name,
             'category_active'=>$request->category_active,
             // 'created_at'=>now(),

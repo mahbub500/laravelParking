@@ -1,14 +1,34 @@
-<!-- Content Wrapper. Contains page content -->
+@extends('templates/header')
+<body class="hold-transition skin-purple-light	sidebar-mini">
+  <div class="wrapper"><header class="main-header">
+  <!-- Logo -->
+  <a href="../" class="logo">
+    <!-- mini logo for sidebar mini 50x50 pixels -->
+    <span class="logo-mini"><b>P</b>S</span>
+    <!-- logo for regular state and mobile devices -->
+    <span class="logo-lg"><b>Parking System</b></span>
+  </a>
+  <!-- Header Navbar: style can be found in header.less -->
+  <nav class="navbar navbar-static-top">
+    <!-- Sidebar toggle button-->
+    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+      <span class="sr-only">Toggle navigation</span>
+    </a>
+
+  </nav>
+  @extends('templates/side_menubar')
+</header>
+</aside><!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
       Manage
-      <small>Parking</small>
+      <small>Category</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Parking</li>
+      <li class="active">Category</li>
     </ol>
   </section>
 
@@ -18,49 +38,40 @@
     <div class="row">
       <div class="col-md-12 col-xs-12">
 
-        <?php  // if ($this->session->flashdata('success')) : ?>
-          <div class="alert alert-success alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <?php  // echo $this->session->flashdata('success'); ?>
-          </div>
-        <?php  // elseif ($this->session->flashdata('error')) : ?>
-          <div class="alert alert-error alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <?php  // echo $this->session->flashdata('error'); ?>
-          </div>
-        <?php  // endif; ?>
-
+        
         <div class="box">
           <div class="box-header">
             <h3 class="box-title">Add Parking</h3>
           </div>
-          <form role="form" action="<?php  // base_url('parking/create') ?>" method="post">
-            <div class="box-body">
-
-              <?php  // echo validation_errors(); ?>
-
+          <form role="form" action="/parking" method="post">
+            @csrf
+            <div class="box-body">              
               <div class="form-group">
                 <label for="group_name">Slot</label>
                 <select class="form-control" id="parking_slot" name="parking_slot">
                   <option value="">---Select---</option>
-                  <?php  // foreach ($slot_data as $k => $v) : ?>
-                    <option value="<?php  // echo $v['id'] ?>"><?php  // echo $v['slot_name']; ?></option>
-                  <?php  // endforeach ?>
-                </select>
+                  @foreach ($slots as $slot)
+                      
+                  <option value="{{$slot->id}}">{{$slot->slot_name}}</option>
+                  @endforeach                                      
+                  </select>
               </div>
               <div class="form-group">
                 <label for="group_name">Category</label>
                 <select class="form-control" id="vehicle_cat" name="vehicle_cat">
                   <option value="">---Select---</option>
-                  <?php  // foreach ($vehicle_cat as $k => $v) : ?>
-                    <option value="<?php  // echo $v['id'] ?>"><?php  // echo $v['name'] ?></option>
-                  <?php  // endforeach ?>
+                  @foreach ($categorys as $category)                      
+                  <option value="{{$category->id}}">{{$category->category_name}}</option>
+                  @endforeach
                 </select>
               </div>
               <div class="form-group">
                 <label for="group_name">Rate</label>
                 <select class="form-control" id="vehicle_rate" name="vehicle_rate">
-                  <option value="">---Select Category---</option>
+                  <option value="">---Select---</option>
+                  @foreach ($rates as $rate)                      
+                  <option value="{{$rate->id}}">{{$rate->rate_name}}</option>
+                  @endforeach
                 </select>
               </div>
 
@@ -69,7 +80,7 @@
 
             <div class="box-footer">
               <button type="submit" class="btn btn-success">Save Changes</button>
-              <a href="<?php  // echo base_url('parking/') ?>" class="btn btn-danger">Back</a>
+              <a href="http://localhost/parkingci/parking/" class="btn btn-danger">Back</a>
             </div>
           </form>
         </div>
@@ -97,7 +108,7 @@
       var value = $(this).val();
 
       $.ajax({
-        url: <?php   echo "'" . base_url('parking/getCategoryRate/') . "'"; ?> + value,
+        url: 'http://localhost/parkingci/parking/getCategoryRate/' + value,
         type: 'post',
         dataType: 'json',
         success: function(response) {
@@ -106,4 +117,18 @@
       });
     });
   });
-</script>
+</script><footer class="main-footer">
+  <div class="pull-right hidden-xs">
+    <b>Developed </b>with <span class="text-danger"> ❤ </span> by Mahbubur Rahman
+  </div>
+  <strong> &copy; 2020 - 2021 - Parking Management System
+</footer>
+
+<!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+<div class="control-sidebar-bg"></div>
+<!-- ./wrapper -->
+
+</body>
+
+</html>

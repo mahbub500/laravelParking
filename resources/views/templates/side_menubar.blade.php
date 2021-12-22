@@ -64,10 +64,10 @@
           </a>
           <ul class="treeview-menu">
             <?php  //if(in_array('createRates', $user_permission)): ?>
-            <li id="createRatesSideTree"><a href="<?php // echo base_url('rates/create') ?>"><i class="fa fa-arrow-circle-right"></i> Add Rate</a></li>
+            <li id="createRatesSideTree"><a href="{{url('/rate/create')}}"><i class="fa fa-arrow-circle-right"></i> Add Rate</a></li>
             <?php  //endif; ?>
             <?php  //if(in_array('updateRates', $user_permission) || in_array('viewRates', $user_permission) || in_array('deleteRates', $user_permission)): ?>
-            <li id="manageRatesSideTree"><a href="<?php // echo base_url('rates') ?>"><i class="fa fa-arrow-circle-right"></i> Manage Rates</a></li>
+            <li id="manageRatesSideTree"><a href="{{url('/rate')}}"><i class="fa fa-arrow-circle-right"></i> Manage Rates</a></li>
             <?php  //endif; ?>
           </ul>
         </li>
@@ -84,10 +84,10 @@
           </a>
           <ul class="treeview-menu">
             <?php  //if(in_array('createParking', $user_permission)): ?>
-              <li id="createParkingSideTree"><a href="<?php // echo base_url('parking/create') ?>"><i class="fa fa-arrow-circle-right"></i> Add Parking</a></li>
+              <li id="createParkingSideTree"><a href="/parking/create"><i class="fa fa-arrow-circle-right"></i> Add Parking</a></li>
             <?php  //endif; ?>
             <?php  //if(in_array('updateParking', $user_permission) || in_array('viewParking', $user_permission) || in_array('deleteParking', $user_permission)): ?>
-              <li id="manageParkingSideTree"><a href="<?php // echo base_url('parking') ?>"><i class="fa fa-arrow-circle-right"></i> Manage Parking</a></li>
+              <li id="manageParkingSideTree"><a href="/parking"><i class="fa fa-arrow-circle-right"></i> Manage Parking</a></li>
             <?php  //endif; ?>
           </ul>
         </li>

@@ -18,10 +18,17 @@ Route::get('/', function () {
     // return view('templates/master');
     return view('dashboard');
 });
+
 Route::resource('/category','CategoryController' );
 Route::resource('/slot','SlotController' );
+Route::resource('/rate','rateController' );
+Route::resource('/parking','parkingController' );
 
 // Route::get('/create', function () {
 //     // return view('templates/master');
 //     return view('category/create');
 // });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
