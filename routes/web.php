@@ -24,6 +24,13 @@ Route::resource('/slot','SlotController' );
 Route::resource('/rate','rateController' );
 Route::resource('/parking','parkingController' );
 
+
+Route::get('/invoice','PdfController@report' );
+Route::get('/invoice-pdf','PdfController@report2' );
+
+
+
+
 // Route::get('/create', function () {
 //     // return view('templates/master');
 //     return view('category/create');

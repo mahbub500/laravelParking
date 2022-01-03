@@ -85,9 +85,9 @@
                       <td><label class="label label-danger">Not Paid</label></td>
                                             <td>
                           <div class="btn btn-group-sm">
-                                                        <a href="http://localhost/parkingci/parking/edit/20" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                                                                                  <a href="http://localhost/parkingci/parking/delete/20" class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                                                                                  <a onclick="printParking('http://localhost/parkingci/parking/printInvoice/20')" class="btn btn-primary"><i class="fa fa-print"></i></a>
+                            <a href="http://localhost/parkingci/parking/edit/20" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                            <a href="http://localhost/parkingci/parking/delete/20" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            <a  href="/invoice" class="btn btn-primary"><i class="fa fa-print"></i></a>
                                                     </div>
                         </td>
                                         </tr>
