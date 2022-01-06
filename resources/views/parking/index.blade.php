@@ -39,7 +39,7 @@
         <div class="col-md-12 col-xs-12">
   
           
-                    <a href="http://localhost/parkingci/parking/create" class="btn btn-success"> <i class="fa fa-plus"></i></a>
+                    <a href="/parking/create" class="btn btn-success"> <i class="fa fa-plus"></i></a>
             <br /> <br />
           
           <div class="box">
@@ -70,11 +70,11 @@
                          
                    
                       <td>MV-F7C04E</td>
-                      <td> {{$parking->created_at}} <br />
+                      <td> {{$parking->create_date}} <br />
                       </td>
                       <td>-</td>
                       {{-- <td>{{$parking->category_id}} </td> --}}
-                      <td>{{$parking->category_id}}</td>
+                      <td>{{$parking->category->category_name}}</td>
                     
                       <td>CNG</td>
                       <td>CNG</td>
@@ -85,8 +85,12 @@
                       <td><label class="label label-danger">Not Paid</label></td>
                                             <td>
                           <div class="btn btn-group-sm">
-                            <a href="http://localhost/parkingci/parking/edit/20" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                            <a href="http://localhost/parkingci/parking/delete/20" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            <a href="parking/{{$parking->id}}/edit" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                            <form action="/parking/{{$parking->id}}" method="POST">
+                              @csrf
+                              @method('DELETE')
+                              <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                            </form>
                             <a  href="/invoice" class="btn btn-primary"><i class="fa fa-print"></i></a>
                                                     </div>
                         </td>

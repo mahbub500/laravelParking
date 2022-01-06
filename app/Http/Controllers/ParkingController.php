@@ -9,6 +9,7 @@ use App\Category;
 use App\Rate;
 
 
+
 class ParkingController extends Controller
 {
     /**
@@ -18,7 +19,11 @@ class ParkingController extends Controller
      */
     public function index()
     {
-        $parkings = DB::table('parkings')->get();
+        
+        // $parkings = DB::table('parkings')->get();
+        $parkings =Parking::all();
+
+        // dump($parkings);
        return view('parking.index',compact('parkings'));
     }
 
@@ -74,7 +79,12 @@ class ParkingController extends Controller
      */
     public function edit(Parking $parking)
     {
-        //
+        $parkings = Parking::all()->find($parking);
+        $category_all = Category::all();
+        $rates = Rate::all();
+        // dump($category_all);
+        // dump($parking);
+        return view('parking.edit',compact('parkings','category_all','rates'));
     }
 
     /**
@@ -95,8 +105,10 @@ class ParkingController extends Controller
      * @param  \App\Parking  $parking
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Parking $parking)
+    public function destroy($id)
     {
-        //
+        // echo $id;
+        $rate = Parking::where('id',$id)->delete();
+        return redirect('/parking');
     }
 }
